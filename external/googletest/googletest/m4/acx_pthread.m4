@@ -65,9 +65,11 @@ AC_REQUIRE([AC_CANONICAL_HOST])
 AC_LANG_SAVE
 AC_LANG_C
 acx_pthread_ok=no
+
 # We used to check for pthread.h first, but this fails if pthread.h
 # requires special compiler flags (e.g. on True64 or Sequent).
 # It gets checked for in the link test anyway.
+
 # First of all, check if the user has set any of the PTHREAD_LIBS,
 # etcetera environment variables, and if threads linking works using
 # them:
@@ -86,17 +88,22 @@ if test x"$PTHREAD_LIBS$PTHREAD_CFLAGS" != x; then
         LIBS="$save_LIBS"
         CFLAGS="$save_CFLAGS"
 fi
+
 # We must check for the threads library under a number of different
 # names; the ordering is very important because some systems
 # (e.g. DEC) have both -lpthread and -lpthreads, where one of the
 # libraries is broken (non-POSIX).
+
 # Create a list of thread flags to try.  Items starting with a "-" are
 # C compiler flags, and other items are library names, except for "none"
 # which indicates that we try without any flags at all, and "pthread-config"
 # which is a program returning the flags for the Pth emulation library.
+
 acx_pthread_flags="pthreads none -Kthread -kthread lthread -pthread -pthreads -mthreads pthread --thread-safe -mt pthread-config"
+
 # The ordering *is* (sometimes) important.  Some notes on the
 # individual items follow:
+
 # pthreads: AIX (must check this before -lpthread)
 # none: in case threads are in libc; should be tried before -Kthread and
 #       other compiler flags to prevent continual compiler warnings
@@ -113,8 +120,10 @@ acx_pthread_flags="pthreads none -Kthread -kthread lthread -pthread -pthreads -m
 # pthread: Linux, etcetera
 # --thread-safe: KAI C++
 # pthread-config: use pthread-config program (for GNU Pth library)
+
 case "${host_cpu}-${host_os}" in
         *solaris*)
+
         # On Solaris (at least, for some versions), libc contains stubbed
         # (non-functional) versions of the pthreads routines, so link-based
         # tests will erroneously succeed.  (We need to link with -pthreads/-mt/
@@ -122,34 +131,42 @@ case "${host_cpu}-${host_os}" in
         # a function called by this macro, so we could check for that, but
         # who knows whether they'll stub that too in a future libc.)  So,
         # we'll just look for -pthreads and -lpthread first:
+
         acx_pthread_flags="-pthreads pthread -mt -pthread $acx_pthread_flags"
         ;;
 esac
+
 if test x"$acx_pthread_ok" = xno; then
 for flag in $acx_pthread_flags; do
+
         case $flag in
                 none)
                 AC_MSG_CHECKING([whether pthreads work without any flags])
                 ;;
+
                 -*)
                 AC_MSG_CHECKING([whether pthreads work with $flag])
                 PTHREAD_CFLAGS="$flag"
                 ;;
+
 		pthread-config)
 		AC_CHECK_PROG(acx_pthread_config, pthread-config, yes, no)
 		if test x"$acx_pthread_config" = xno; then continue; fi
 		PTHREAD_CFLAGS="`pthread-config --cflags`"
 		PTHREAD_LIBS="`pthread-config --ldflags` `pthread-config --libs`"
 		;;
+
                 *)
                 AC_MSG_CHECKING([for the pthreads library -l$flag])
                 PTHREAD_LIBS="-l$flag"
                 ;;
         esac
+
         save_LIBS="$LIBS"
         save_CFLAGS="$CFLAGS"
         LIBS="$PTHREAD_LIBS $LIBS"
         CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
+
         # Check for various functions.  We must include pthread.h,
         # since some functions may be macros.  (On the Sequent, we
         # need a special flag -Kthread to make this header compile.)
@@ -164,22 +181,27 @@ for flag in $acx_pthread_flags; do
                      pthread_attr_init(0); pthread_cleanup_push(0, 0);
                      pthread_create(0,0,0,0); pthread_cleanup_pop(0); ],
                     [acx_pthread_ok=yes])
+
         LIBS="$save_LIBS"
         CFLAGS="$save_CFLAGS"
+
         AC_MSG_RESULT($acx_pthread_ok)
         if test "x$acx_pthread_ok" = xyes; then
                 break;
         fi
+
         PTHREAD_LIBS=""
         PTHREAD_CFLAGS=""
 done
 fi
+
 # Various other checks:
 if test "x$acx_pthread_ok" = xyes; then
         save_LIBS="$LIBS"
         LIBS="$PTHREAD_LIBS $LIBS"
         save_CFLAGS="$CFLAGS"
         CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
+
         # Detect AIX lossage: JOINABLE attribute is called UNDETACHED.
 	AC_MSG_CHECKING([for joinable pthread attribute])
 	attr_name=unknown
@@ -193,6 +215,7 @@ if test "x$acx_pthread_ok" = xyes; then
                                [Define to necessary symbol if this constant
                                 uses a non-standard name on your system.])
         fi
+
         AC_MSG_CHECKING([if more special flags are required for pthreads])
         flag=no
         case "${host_cpu}-${host_os}" in
@@ -203,6 +226,7 @@ if test "x$acx_pthread_ok" = xyes; then
         if test "x$flag" != xno; then
             PTHREAD_CFLAGS="$flag $PTHREAD_CFLAGS"
         fi
+
         LIBS="$save_LIBS"
         CFLAGS="$save_CFLAGS"
         # More AIX lossage: must compile with xlc_r or cc_r
@@ -211,6 +235,7 @@ if test "x$acx_pthread_ok" = xyes; then
         else
           PTHREAD_CC=$CC
 	fi
+
 	# The next part tries to detect GCC inconsistency with -shared on some
 	# architectures and systems. The problem is that in certain
 	# configurations, when -shared is specified, GCC "forgets" to
@@ -321,9 +346,11 @@ if test "x$acx_pthread_ok" = xyes; then
 else
         PTHREAD_CC="$CC"
 fi
+
 AC_SUBST(PTHREAD_LIBS)
 AC_SUBST(PTHREAD_CFLAGS)
 AC_SUBST(PTHREAD_CC)
+
 # Finally, execute ACTION-IF-FOUND/ACTION-IF-NOT-FOUND:
 if test x"$acx_pthread_ok" = xyes; then
         ifelse([$1],,AC_DEFINE(HAVE_PTHREAD,1,[Define if you have POSIX threads libraries and header files.]),[$1])
