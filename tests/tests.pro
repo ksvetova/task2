@@ -18,7 +18,7 @@ LIBS += -lgcov
 HEADERS +=     \
     ../app/_text.h \
     ../app/text.h \
-    m_test.h \
+    save_test.h \
    
 
 SOURCES +=     main.cpp \
