@@ -1,8 +1,20 @@
 #ifndef REMOVE_FIRST_NO_ENTRY_LINE_H
 #define REMOVE_FIRST_NO_ENTRY_LINE_H
 #include "main.h"
-TEST(r1ne, test1 ) {
 
+/*Тестирование функции удаления первой непустой строки */
+
+
+TEST(r1ne, test1 ) {
+  /* тест на проверку функции, если первая строка файла пустая, позитивный тест
+  input:
+  
+    Июнь — сессия 
+    Июль — отдых
+    Август — отдых
+
+  
+ */
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out2.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out2.txt", "wb");
     if (outputFile == NULL) {
@@ -34,7 +46,20 @@ TEST(r1ne, test1 ) {
     }
 }
 TEST(r1ne, test2) {
+    /* тест на провеку функции, если первая строка непустая, позитивный тест
+    input:
+    stroka1
+    stroka2
+    stroka3
+    stroka4
 
+    expected:
+    stroka2
+    stroka3
+    stroka4
+
+    
+    */
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out3.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out3.txt", "wb");
     if (outputFile == NULL) {
@@ -66,6 +91,7 @@ TEST(r1ne, test2) {
     }
 }
 TEST(r1ne, test3) {
+    /*  тест на проверку, если первая строка непустая */
 
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out9.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out9.txt", "wb");
@@ -98,6 +124,17 @@ TEST(r1ne, test3) {
     }
 }
 TEST(r1ne, test4) {
+    /* тест на проверку функции, если первая строка начинается с пробела, позитивный
+    input:
+                  /^$%^#%^#%^#%^#&
+    str1
+    str2
+
+    output:
+    str1
+    sr2
+
+    */
 
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out10.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out10.txt", "wb");
