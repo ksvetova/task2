@@ -6,10 +6,8 @@ CONFIG -= qt
 SOURCES += \
     text/append_line.c \
     text/change_cursor_position.c \
-    text/create_text.c \
     text/delete_line.c \
     text/process_forward.c \
-    text/remove_all.c \
     editor.c \
     end_cursor.c \
     getcrsr.c \
