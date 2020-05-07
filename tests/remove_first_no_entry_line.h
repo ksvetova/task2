@@ -12,6 +12,11 @@ TEST(r1ne, test1 ) {
     Июнь — сессия 
     Июль — отдых
     Август — отдых
+  
+  expected:
+  |
+  Июль — отдых
+  Август — отдых
 
   
  */
@@ -130,7 +135,7 @@ TEST(r1ne, test4) {
     str1
     str2
 
-    output:
+    expected:
     str1
     sr2
 
