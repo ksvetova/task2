@@ -1,11 +1,28 @@
 #ifndef END_CURSOR_H
 #define END_CURSOR_H
 #include "main.h"
-/*Тест для проверки работы  программы.Изначально курсор в самом низу файла.
- * Перемещаем на 1 1 и выполняем команду mle.
- * Результат: курсор переместился в конец строки*/
-TEST(mle, test1) {
 
+TEST(mle, test1) {
+    /*  Тест для проверки работы программы, изначально курсор в низу файла.
+ Перемещаем на 1 1 и выполняем команду mle(перемещение курсора в конец строки)
+
+    input:
+    stroka1
+    stroka2
+    stroka3
+    stroka4
+    stroka5
+    stroka6 
+    
+    expected:
+    stroka1|
+    stroka2
+    stroka3
+    stroka4
+    stroka5
+    stroka6
+    */
+    
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out7.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out7.txt", "wb");
     if (outputFile == NULL) {
@@ -36,11 +53,22 @@ TEST(mle, test1) {
         FAIL();
     }
 }
-/*Тест для проверки работы  программы на пустой строке.Изначально курсор в самом низу файла.
- * Перемещаем на 1 1 на  и выполняем команду mle.
- * Результат: курсор переместился в конец строки*/
-TEST(mle, test2) {
 
+TEST(mle, test2) {
+ /*Тест для проверки работы  программы на пустой строке.Изначально курсор в самом низу файла.
+  * Перемещаем на 1 1 на  и выполняем команду mle.
+  * Результат: курсор переместился в конец строки
+ input:
+ str1
+ str2
+ str3
+
+expected:
+ |
+ str1
+ str2
+ str3
+*/
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out1.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out1.txt", "wb");
     if (outputFile == NULL) {
@@ -72,6 +100,15 @@ TEST(mle, test2) {
     }
 }
 TEST(mle, test3) {
+  /*Тест для проверки функции, если курсор в первой строке, n - позиции
+  * курсор должен переместиться на первую строку и 12 позицию
+
+ input:
+ Iamverylongstring
+
+expected:
+Iamverylongstring|
+*/
 
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out8.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out8.txt", "wb");
@@ -103,9 +140,20 @@ TEST(mle, test3) {
         FAIL();
     }
 }
-/*тест проверяет работу функции в пустой строке между не пустыми строками*/
-TEST(mle, test4) {
 
+TEST(mle, test4) {
+    /*тест для проверки функции, когда курсор в пустой строке между двумя непустыми строками
+    input:
+    Ты хочешь домой
+
+    Они встретились вчера
+
+    expected:
+    Ты хочешь домой
+    |
+    Они встретились вчера
+    */
+    
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out4.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out4.txt", "wb");
     if (outputFile == NULL) {
@@ -136,8 +184,15 @@ TEST(mle, test4) {
         FAIL();
     }
 }
-/*Тест на проверку работы функции,если курсор изначально находится в конце строки*/
+
 TEST(mle, test5) {
+    /*тест для проверки функции, если курсор находится в конце строки
+    input:
+    veryveryveryveryverylongstring
+    
+    expected:
+    veryveryveryveryverylongstring|
+    */
 
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out5.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out5.txt", "wb");
@@ -169,8 +224,14 @@ TEST(mle, test5) {
         FAIL();
     }
 }
-/*Проверка работы функции, если строка начинается с пробелов*/
+
 TEST(mle, test6) {
+    /* тест функции, если строка начинается с пробелов
+     input:
+                    mskjkshdkj
+    expected:
+                   mskjkshdkj|
+    */
 
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/output6.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/output6.txt", "wb");
