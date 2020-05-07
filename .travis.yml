@@ -3,13 +3,11 @@ language:
 
 before_install:
   - pip install --user cpp-coveralls
-  
+
 addons:
   sonarcloud:
     organization: "ksvetova"
-    token:
-      secure: $SONAR_TOKEN
-      
+
 script:
   - qmake
   - make
@@ -18,11 +16,11 @@ script:
 after_success:
   - coveralls --root . -E ".*external.*" -E ".*tests.*"
   - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
-  - sonar-scanner
-  
+  - sonar-scanner -Dsonar.verbose=true -X
+
 cache:
   directories:
     - '$HOME/.sonar/cache'
-  
+    
 notifications:
   email: false
