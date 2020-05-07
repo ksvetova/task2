@@ -1,8 +1,19 @@
 #ifndef SHOWUPFIRST_H
 #define SHOWUPFIRST_H
 #include "main.h"
-TEST(showupfirst, test1) {
 
+/*Функция капитализации символов, перед которыми был пробел*/
+TEST(showupfirst, test1) {
+    /*тест на корректность проверки работы функции, позитивный
+   input:
+   slovo1 slovo2 slovo3 slovo4
+   
+   expected:
+   slovo1 Slovo2 Slovo3 Slovo4
+    |
+
+   
+   */
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out11.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out11.txt", "wb");
     if (outputFile == NULL) {
@@ -32,7 +43,21 @@ TEST(showupfirst, test1) {
     }
 }
 TEST(showupfirst, test2) {
+ /*тест на корректность проверки работы функции,если все все строки начинаются с пробела, позитивный
+   input:
+    str1
+    str2
+    str3
+    str4
 
+   
+   expected:
+    Str1
+    Str2
+    Str3
+    Str4
+    |
+ */
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out12.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out12.txt", "wb");
     if (outputFile == NULL) {
