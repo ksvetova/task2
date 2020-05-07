@@ -25,7 +25,7 @@ void load(text txt, const char *filename) {
   }
 
   /* Удаляем предыдущее содержимое */
-  remove_all(txt);
+ // remove_all(txt);
 
   /* Считываем содержимое строка за строкой */
   while (fgets(buf, MAXLINE, f)) {
