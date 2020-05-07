@@ -87,6 +87,14 @@ TEST(showupfirst, test2) {
     }
 }
 TEST(showupfirst, test3) {
+ /*тест на корректность проверки работы функции,если курсор стоит перед словом в строке, позитивный
+   input:
+   slovo1 slovo2
+
+   
+   expected:
+ |slovo1 Slovo2
+ */
 
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out13.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out13.txt", "wb");
@@ -118,6 +126,15 @@ TEST(showupfirst, test3) {
     }
 }
 TEST(showupfirst, test4) {
+    /*тест на корректность проверки работы функции,если в строке нет букв, позитивный
+   input:
+   ^$%%^$^%$
+
+   
+   expected:
+ ^$%%^$^%$
+ |
+ */
 
     FILE *outputFile;
     TRAVIS ? outputFile = fopen("tests/output/out14.txt", "wb") : outputFile = fopen("../../test2/gtest-master/tests/output/out14.txt", "wb");
