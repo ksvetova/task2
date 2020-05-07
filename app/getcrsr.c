@@ -7,13 +7,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void get_cursor_position(int index, char *contents, int cursor,
-                                void *data);
+static void get_cursor_position(int index, char *contents, int cursor,void *data);
 
 void getcrsr(text txt) { process_forward(txt, get_cursor_position, NULL); }
 
-static void get_cursor_position(int index, char *contents, int cursor,
-                                void *data) {
+static void get_cursor_position(int index, char *contents, int cursor, void *data) {
   assert(contents != NULL);
   UNUSED(data);
   if (cursor >= 0) {
