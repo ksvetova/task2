@@ -64,6 +64,6 @@ void change_cursor_position(text txt, int new_line, int new_position);
  * @param txt текст
  * @returns none
  */
-//void remove_all(text txt);
+void remove_all(text txt);
 
 #endif
