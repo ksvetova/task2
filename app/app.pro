@@ -7,6 +7,7 @@ SOURCES += \
     text/append_line.c \
     text/change_cursor_position.c \
     text/delete_line.c \
+    txt/create_text.c\
     text/process_forward.c \
     editor.c \
     end_cursor.c \
