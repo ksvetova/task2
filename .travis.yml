@@ -7,8 +7,8 @@ before_install:
 addons:
   sonarcloud:
     organization: "ksvetova"
-     token:
-      secure: 2f733b4fe79c0037b28b352aa33d61cbf302b7fe
+    token:
+      secure: "aa8f19b02518279be27fcd3623ddab01941f0fde"
 
 script:
   - qmake
