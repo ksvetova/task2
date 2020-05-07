@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "_text.h"
+
+#include "myfunc.h"
 
 int main()
 {
-    return 0;
+    printf("Hello World!\n");
+    return myfunc(2);
 }
