@@ -26,7 +26,7 @@ typedef struct _crsr *cursor;
  * Создает новый текстовый объект
  * @returns текст
  */
-//text create_text();
+text create_text();
 
 /**
  * Добавляет одну строку к тексту
