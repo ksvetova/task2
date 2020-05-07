@@ -1,4 +1,4 @@
- cat
- vladimir
- watch
- witcher
+ str1
+ str2
+ str3
+ str4
